@@ -1,5 +1,5 @@
 import { loginWithGoogle, signOutGoogle } from '../firebase' //importo el servicio creado con firebase
-
+import { retrieveFavs }  from './charsDuck'
 
 // constants
 
@@ -75,6 +75,7 @@ export let doGoogleLoginAction = () => (dispatch, getState) => {
             }
         })
         saveStorage(getState()) //Pasamos todo el store de Redux ya con el usuario logueado
+        retrieveFavs()(dispatch, getState)
     })
      .catch(e=> {
          console.log(e)
